@@ -1,0 +1,114 @@
+@startuml
+' Estilos
+skinparam classAttributeIconSize 0
+
+class Cancion {
+    - ID: int
+    - titulo: string
+    - duracion: string
+    - año: int
+    - idAlbum: int
+    - idArtista: int
+    + SiguienteElemento: Cancion
+}
+
+class listaCanciones{
+    + primerCancion: Cancion
+    + incercionInicio():bolean
+}
+
+class Artista {
+    - ID: int
+    - nombreArtistico: string
+    - nombreReal: string
+    - pais: string
+    - selloDiscografico: int
+    + lstAlbumes: listaAlbumes
+    + lstCanciones: listaCanciones
+    + SiguienteElemento: Artista
+    + AnteriorElemento: Artista
+}
+
+class listaArtista{
+    + primerCancion: Artista
+    + incercionAlfa():bolean
+}
+
+class Album {
+    - ID: int
+    - titulo: string
+    - año: int
+    - numeroCanciones: int
+    - IDArtista: int
+    - lstCanciones: listaCanciones
+    - siguienteElemento: Album
+}
+
+class listaAlbumes{
+    + PrimerElemento: Album
+    + ultimoElemento: Album
+    + incercionAlFinal():bolean
+}
+
+class GeneroMusical {
+    - ID: int
+    - nombre: string
+    - descripcion: string
+    - siguienteElemento: GeneroMusical
+    - AnteriorElemento: GeneroMusical
+}
+
+class listaGeneroMusical{
+    - primerElemento
+    + incercionFinal():bolean
+}
+
+class Playlist {
+    - ID: int
+    - nombre: string
+    - creador: string
+    - fecha: date
+    - lstCanciones: listaCanciones
+    - siguienteElemento: Playlist
+}
+
+class listaPlaylist{
+    + primerElemento: Playlist
+    + incercionInicio(): bolean
+}
+
+class SelloDiscografico {
+    - ID: int
+    - nombre: string
+    - pais: string
+    - añoFundacion: int
+    - ListaArtistaAsociados: listaArtistas
+    - siguienteElemento: SelloDiscografico
+    - anteriorElemento: SelloDiscografico
+}
+
+class listaselloDiscograficos{
+    - primerElemento: SelloDiscografico
+    + incercionFinal(): bolean
+}
+
+' Relaciones
+
+listaCanciones --> Cancion : contiene *
+listaAlbumes --> Album : contiene *
+listaArtista --> Artista : contiene *
+listaGeneroMusical --> GeneroMusical : contiene *
+listaPlaylist --> Playlist : contiene *
+listaselloDiscograficos --> SelloDiscografico : contiene *
+
+Artista --> listaAlbumes : tiene
+Artista --> listaCanciones : tiene
+Album --> listaCanciones : contiene
+Playlist --> listaCanciones : contiene
+SelloDiscografico --> listaArtista : tiene
+
+Cancion --> Artista : pertenece a
+Cancion --> Album : pertenece a
+Artista --> SelloDiscografico : firmado por
+Album --> Artista : creado por
+@enduml
