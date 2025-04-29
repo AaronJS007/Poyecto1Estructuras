@@ -73,7 +73,7 @@ struct listaCanciones
         return false;
     }
 
-    bool eliminarPokemon(int id)
+    bool eliminar(int id)
     {
         if (primerElemento == nullptr)
         {

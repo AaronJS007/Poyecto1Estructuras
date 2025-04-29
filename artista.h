@@ -2,12 +2,14 @@
 #define ARTISTA_H
 #include <iostream>
 using namespace std;
+#include"listaAlbumes.h"
+#include"listaCanciones.h"
 
 struct artista{
     int ID,selloDiscografico;
     string nombreArtistico, nombreReal, pais;
-    //lista album
-    //lista canciones
+    listaCanciones * lstCanciones;
+    listaAlbumes * lstAlbumes;
     artista * siguienteElemento;
     artista * anteriorElemento;
 
@@ -17,8 +19,8 @@ struct artista{
         nombreReal=pNombreReal;
         pais=pPais;
         selloDiscografico=pSelloDiscografico;
-        //lista albumes
-        //lista canciones
+        lstCanciones = new listaCanciones();
+        lstAlbumes = new listaAlbumes();
         siguienteElemento=nullptr;
         anteriorElemento=nullptr;
     }

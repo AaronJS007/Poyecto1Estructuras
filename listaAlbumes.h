@@ -21,7 +21,7 @@ struct listaAlbumes
         }
     }
 
-    bool incercionInicio(int ID,string titulo,int anno, int numeroCanciones, int IDArtista)
+    bool incercionFinal(int ID,string titulo,int anno, int numeroCanciones, int IDArtista)
     {
         try
         {
@@ -53,7 +53,7 @@ struct listaAlbumes
         }
     }
 
-    bool modificar(int ID,string titulo,int anno, int numeroCanciones, int IDArtista)
+    bool modificar(int ID,string titulo,int anno, int numeroCanciones, int IDArtista, listaCanciones * lstcanciones)
     {
         album *temp = primerElemento;
         while (temp)
@@ -65,6 +65,7 @@ struct listaAlbumes
                 temp->numeroCanciones=numeroCanciones;
                 temp->lstCanciones;
                 temp->idArtista = IDArtista;
+                temp->lstCanciones = lstcanciones;
                 return true;
             }
             temp = temp->siguienteElemento;
@@ -72,15 +73,15 @@ struct listaAlbumes
         return false;
     }
 
-    bool eliminarPokemon(int id)
+    bool eliminar(int id)
     {
         if (primerElemento == nullptr)
         {
             return false;
         }
-        cancion *temp = primerElemento;
+        album *temp = primerElemento;
 
-        if (primerElemento->ID == id)
+        if (primerElemento->IDAlbum == id)
         {
             primerElemento = primerElemento->siguienteElemento;
             delete temp;
@@ -89,9 +90,9 @@ struct listaAlbumes
 
         while (temp->siguienteElemento != nullptr)
         {
-            if (temp->siguienteElemento->ID == id)
+            if (temp->siguienteElemento->IDAlbum == id)
             {
-                cancion *eliminar = temp->siguienteElemento;
+                album *eliminar = temp->siguienteElemento;
                 temp->siguienteElemento = eliminar->siguienteElemento;
                 delete eliminar;
                 return true;
