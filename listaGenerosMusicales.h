@@ -48,9 +48,9 @@ struct listaGenerosMusicales
                     temp = temp->siguienteElemento;
                 } while (temp != primerElemento);
     
-                generoMusical* ultimo = primerElemento->anteriorElemento;
-                ultimo->siguienteElemento = Nuevo;
-                Nuevo->anteriorElemento = ultimo;
+                temp = primerElemento->anteriorElemento;
+                temp->siguienteElemento = Nuevo;
+                Nuevo->anteriorElemento = temp;
                 Nuevo->siguienteElemento = primerElemento;
                 primerElemento->anteriorElemento = Nuevo;
             }
@@ -88,42 +88,44 @@ struct listaGenerosMusicales
         if (primerElemento == nullptr)
             return false;
     
-        generoMusical *temp = primerElemento;
+        generoMusical* temp = primerElemento;
     
-        if (temp->IdGeneroMusical == id)
+        // Caso especial: solo un nodo y es el que queremos eliminar
+        if (temp->IdGeneroMusical == id && temp->siguienteElemento == primerElemento)
         {
-            if (temp->siguienteElemento == temp)
-            {
-                delete temp;
-                primerElemento = nullptr;
-                return true;
-            }
-            else
-            {
-                generoMusical *ultimo = primerElemento->anteriorElemento;
-                primerElemento = primerElemento->siguienteElemento;
-                ultimo->siguienteElemento = primerElemento;
-                primerElemento->anteriorElemento = ultimo;
-                delete temp;
-                return true;
-            }
+            delete temp;
+            primerElemento = nullptr;
+            return true;
         }
     
-        do
+        // Caso especial: primer nodo a eliminar
+        if (temp->IdGeneroMusical == id)
         {
-            if (temp->siguienteElemento->IdGeneroMusical == id)
+            generoMusical* ultimo = primerElemento->anteriorElemento;
+            primerElemento = primerElemento->siguienteElemento;
+            ultimo->siguienteElemento = primerElemento;
+            primerElemento->anteriorElemento = ultimo;
+            delete temp;
+            return true;
+        }
+    
+        // Resto de la lista
+        temp = temp->siguienteElemento;
+        while (temp != primerElemento)
+        {
+            if (temp->IdGeneroMusical == id)
             {
-                generoMusical *eliminar = temp->siguienteElemento;
-                temp->siguienteElemento = eliminar->siguienteElemento;
-                eliminar->siguienteElemento->anteriorElemento = temp;
-                delete eliminar;
+                temp->anteriorElemento->siguienteElemento = temp->siguienteElemento;
+                temp->siguienteElemento->anteriorElemento = temp->anteriorElemento;
+                delete temp;
                 return true;
             }
             temp = temp->siguienteElemento;
-        } while (temp != primerElemento);
+        }
     
         return false;
     }
+    
 };    
 
 #endif
