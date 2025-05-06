@@ -138,6 +138,19 @@ struct listaArtistas
     
         return false;
     }
+
+    int cantidad(){
+        if (primerElemento==nullptr){
+            return 0;
+        }
+        artista * temp = primerElemento;
+        int cantidad=0;
+        while (temp){
+            cantidad++;
+            temp = temp->siguienteElemento;
+        }
+        return cantidad;
+    }
     
 
 };

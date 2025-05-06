@@ -125,7 +125,24 @@ struct listaGenerosMusicales
     
         return false;
     }
-    
+
+    int cantidad(){
+        if (primerElemento==nullptr){
+            return 0;
+        }
+        
+        cancion * temp = primerElemento;
+        int cantidad=0;
+        do
+        {
+            cantidad++;
+            temp=temp->siguienteElemento;
+        } while (temp!=primerElemento);
+        
+        return cantidad;
+    }
+
 };    
+
 
 #endif

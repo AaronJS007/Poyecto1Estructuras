@@ -102,6 +102,18 @@ struct listaCanciones
 
         return false;
     }
+    int cantidad(){
+        if (primerElemento==nullptr){
+            return 0;
+        }
+        cancion * temp = primerElemento;
+        int cantidad=0;
+        while (temp){
+            cantidad++;
+            temp = temp->siguienteElemento;
+        }
+        return cantidad;
+    }
 };
 
 #endif

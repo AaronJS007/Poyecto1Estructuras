@@ -2,11 +2,12 @@
 #define SELLODISCOGRAFICO_H
 #include <iostream>
 using namespace std;
+#include"listaArtistas.h"
 
 struct selloDiscografico{
-    int id,annoFunfacion;
+    int id,annoFundacion;
     string nombre,pais;
-    //lstArtistas
+    listaArtistas * lstArtistas;
     selloDiscografico * siguienteElemento;
     selloDiscografico * anteriorElemento;
 
@@ -14,8 +15,8 @@ struct selloDiscografico{
         id=pId;
         nombre=pNombre;
         pais=pPais;
-        annoFunfacion=pAnno;
-        //lstArtistas
+        annoFundacion=pAnno;
+        lstArtistas = new listaArtistas();
         siguienteElemento=nullptr;
         anteriorElemento=nullptr;
     }

@@ -5,7 +5,7 @@ skinparam classAttributeIconSize 0
 class Cancion {
     - ID: int
     - titulo: string
-    - duracion: string
+    - duracion: int
     - año: int
     - idAlbum: int
     - idArtista: int
@@ -15,14 +15,21 @@ class Cancion {
 class listaCanciones{
     + primerCancion: Cancion
     + incercionInicio():bolean
+    + modificar(Cancion:cancion):bolean
+    + eliminar(Cancion:cancion):bolean
+
+    + cancionesPublicadas(string anno):int
+    + cantidadCanciones(): int
+    + cancionMasLarga(): cancion
+    + imprimir():void
 }
 
 class Artista {
     - ID: int
-    - nombreArtistico: string
-    - nombreReal: string
+    - nombre_artistico: string
+    - nombre_real: string
     - pais: string
-    - selloDiscografico: int
+    - sello_discografico: int
     + lstAlbumes: listaAlbumes
     + lstCanciones: listaCanciones
     + SiguienteElemento: Artista
@@ -32,14 +39,20 @@ class Artista {
 class listaArtista{
     + primerCancion: Artista
     + incercionAlfa():bolean
+    + modificar(Artista:artista):bolean
+    + eliminar(Artista:artista):bolean
+
+    + CantidadArtista():int
+    + imprimir():void
+    + reporteCadaArtista():void
 }
 
 class Album {
     - ID: int
     - titulo: string
     - año: int
-    - numeroCanciones: int
-    - IDArtista: int
+    - numero_canciones: int
+    - ID_artista: int
     - lstCanciones: listaCanciones
     - siguienteElemento: Album
 }
@@ -48,6 +61,13 @@ class listaAlbumes{
     + PrimerElemento: Album
     + ultimoElemento: Album
     + incercionAlFinal():bolean
+    + modificar(Album:Album):bolean
+    + eliminar(Album:Album):bolean
+
+    + albumesMasCanciones(int cantidad): void
+    + CantidadAlbumes():int
+    + imprimir():void
+    + reporteConCanciones():void
 }
 
 class GeneroMusical {
@@ -61,6 +81,11 @@ class GeneroMusical {
 class listaGeneroMusical{
     - primerElemento
     + incercionFinal():bolean
+    + modificar(GeneroMusical:GeneroMusical):bolean
+    + eliminar(GeneroMusical:GeneroMusical):bolean
+
+    + generoMasCanciones(): GeneroMusical
+    + imprimir():void
 }
 
 class Playlist {
@@ -69,19 +94,23 @@ class Playlist {
     - creador: string
     - fecha: date
     - lstCanciones: listaCanciones
-    - siguienteElemento: Playlist
 }
 
 class listaPlaylist{
     + primerElemento: Playlist
     + incercionInicio(): bolean
+    + modificar(Playlist:Playlist):bolean
+    + eliminar(Playlist:Playlist):bolean
+
+    + imprimir():void
+
 }
 
 class SelloDiscografico {
     - ID: int
     - nombre: string
     - pais: string
-    - añoFundacion: int
+    - año_fundacion: int
     - ListaArtistaAsociados: listaArtistas
     - siguienteElemento: SelloDiscografico
     - anteriorElemento: SelloDiscografico
@@ -90,6 +119,10 @@ class SelloDiscografico {
 class listaselloDiscograficos{
     - primerElemento: SelloDiscografico
     + incercionFinal(): bolean
+    + modificar(SelloDiscografico:SelloDiscografico):bolean
+    + eliminar(SelloDiscografico:SelloDiscografico):bolean
+
+    + imprimir():void
 }
 
 ' Relaciones

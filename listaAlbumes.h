@@ -102,6 +102,19 @@ struct listaAlbumes
 
         return false;
     }
+
+    int cantidad(){
+        if (primerElemento==nullptr){
+            return 0;
+        }
+        album * temp = primerElemento;
+        int cantidad=0;
+        while (temp){
+            cantidad++;
+            temp = temp->siguienteElemento;
+        }
+        return cantidad;
+    }
 };
 
 #endif
