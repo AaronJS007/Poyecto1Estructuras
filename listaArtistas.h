@@ -151,6 +151,51 @@ struct listaArtistas
         }
         return cantidad;
     }
+
+    void artistaMasAlbumes(){
+        artista* temp = primerElemento;
+        string nombre = "";
+        int cantidad = 0;
+        int cantidad2 = 0;
+        while (temp){
+            cantidad2 = temp->lstAlbumes->cantidad();
+            if ( cantidad2 > cantidad)
+            {
+                cantidad=cantidad2;
+                nombre=temp->nombreArtistico;
+            }
+           temp=temp->siguienteElemento;
+        }
+        if(cantidad!=0){
+            cout << "El artista con mas albumes es: " << nombre << "\n";
+        }else{
+            cout << "No hay artistas con albumes \n";
+        } 
+    }
+
+    void CantidadAlbumesPorArtista(){
+        artista* temp = primerElemento;
+        while (temp) {
+            cout << "Nombre artista: " << temp -> nombreArtistico;
+            cout << "Cantidad albumes: " << temp->lstAlbumes->cantidad();
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        }
+    }
+
+    void imprimir() {
+        artista* temp = primerElemento;
+        while (temp) {
+            cout << "ID: " << temp->ID << endl;
+            cout << "Título: " << temp->titulo << endl;
+            cout << "Duración: " << temp->duracion << " segundos" << endl;
+            cout << "Año: " << temp->anno << endl;
+            cout << "ID Álbum: " << temp->idAlbum << endl;
+            cout << "ID Artista: " << temp->idArtista << endl;
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        }
+    }
     
 
 };

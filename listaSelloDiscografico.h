@@ -142,6 +142,33 @@ struct listaSelloDiscografico
         
         return cantidad;
     }
+
+    void selloConMasArtistas(){
+        if (primerElemento == nullptr) {
+            cout << "No hay sellos discográficos registrados.\n";
+            return;
+        }
+    
+        selloDiscografico* temp = primerElemento;
+        string nombre = "";
+        int maxArtistas = 0;
+        int cantidad = 0;
+    
+        do {
+            cantidad = temp->lstArtistas->cantidad();
+            if (cantidad > maxArtistas) {
+                maxArtistas = cantidad;
+                nombre = temp->nombre;
+            }
+            temp = temp->siguienteElemento;
+        } while (temp != primerElemento);
+    
+        if (maxArtistas > 0) {
+            cout << "El sello con más artistas es: " << nombre << " (" << maxArtistas << " artistas)\n";
+        } else {
+            cout << "No hay artistas registrados en los sellos.\n";
+        }
+    }
     
 };    
 

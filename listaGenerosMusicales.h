@@ -131,7 +131,7 @@ struct listaGenerosMusicales
             return 0;
         }
         
-        cancion * temp = primerElemento;
+        generoMusical * temp = primerElemento;
         int cantidad=0;
         do
         {
@@ -141,6 +141,32 @@ struct listaGenerosMusicales
         
         return cantidad;
     }
+
+    void generoMasCanciones() {
+        if (primerElemento == nullptr) {
+            cout << "No hay géneros registrados.\n";
+            return;
+        }
+    
+        generoMusical* temp = primerElemento;
+        string nombre = "";
+        int cantidad = 0;
+    
+        do {
+            int cantidad2 = temp->lstCanciones->cantidad();  // asumimos que existe el método cantidad()
+            if (cantidad2 > cantidad) {
+                cantidad = cantidad2;
+                nombre = temp->nombre;
+            }
+            temp = temp->siguienteElemento;
+        } while (temp != primerElemento);
+    
+        if (cantidad != 0) {
+            cout << "El género con más canciones es: " << nombre << " (" << cantidad << " canciones)\n";
+        } else {
+            cout << "No hay géneros con canciones.\n";
+        }
+    }    
 
 };    
 

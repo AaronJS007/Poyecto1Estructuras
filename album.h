@@ -6,7 +6,7 @@ using namespace std;
 
 struct album
 {
-    int IDAlbum, anno, numeroCanciones, idAlbum, idArtista;
+    int IDAlbum, anno, numeroCanciones, idArtista;
     string titulo;
     listaCanciones *lstCanciones;
     album *siguienteElemento;

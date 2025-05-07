@@ -115,6 +115,35 @@ struct listaAlbumes
         }
         return cantidad;
     }
+
+    void AlbumesConCancionesMayores(int numero){
+        album * temp = primerElemento;
+        while (temp) {
+            if (temp->lstCanciones->cantidadCanciones>numero)
+            {
+            cout << "ID: " << temp->IDAlbum << endl;
+            cout << "Título: " << temp->titulo << endl;
+            cout << "Año: " << temp->anno << endl;
+            cout << "Numero de Canciones: " << temp->lstCanciones->cantidadCanciones << endl;
+            cout << "ID Artista: " << temp->idArtista << endl;
+            cout << "--------------------------" << endl;
+            }
+            temp = temp->siguienteElemento;
+        }
+    }
+
+    void imprimir(){
+        album * temp = primerElemento;
+        while (temp) {
+            cout << "ID: " << temp->IDAlbum << endl;
+            cout << "Título: " << temp->titulo << endl;
+            cout << "Año: " << temp->anno << endl;
+            cout << "Numero de Canciones: " << temp->lstCanciones->cantidadCanciones << endl;
+            cout << "ID Artista: " << temp->idArtista << endl;
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        }
+    }
 };
 
 #endif

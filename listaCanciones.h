@@ -102,7 +102,8 @@ struct listaCanciones
 
         return false;
     }
-    int cantidad(){
+
+    int cantidadCanciones(){
         if (primerElemento==nullptr){
             return 0;
         }
@@ -114,6 +115,51 @@ struct listaCanciones
         }
         return cantidad;
     }
+
+    cancion cancionMasLarga(){
+        cancion* respuesta = primerElemento;
+        cancion* temp = primerElemento;
+        while (temp) {
+            if (temp->duracion>respuesta)
+            {
+                respuesta = temp;
+            }
+            
+            temp = temp->siguienteElemento;
+        }
+        return respuesta;
+    }
+
+    void cancionesPublicadas(int anno){
+        cancion* temp = primerElemento;
+        while (temp) {
+            if (temp->anno==anno){
+            cout << "ID: " << temp->ID << endl;
+            cout << "Título: " << temp->titulo << endl;
+            cout << "Duración: " << temp->duracion << " segundos" << endl;
+            cout << "Año: " << temp->anno << endl;
+            cout << "ID Álbum: " << temp->idAlbum << endl;
+            cout << "ID Artista: " << temp->idArtista << endl;
+            cout << "--------------------------" << endl;
+            }
+            temp = temp->siguienteElemento;
+        }
+    }
+
+    void imprimir() {
+        cancion* temp = primerElemento;
+        while (temp) {
+            cout << "ID: " << temp->ID << endl;
+            cout << "Título: " << temp->titulo << endl;
+            cout << "Duración: " << temp->duracion << " segundos" << endl;
+            cout << "Año: " << temp->anno << endl;
+            cout << "ID Álbum: " << temp->idAlbum << endl;
+            cout << "ID Artista: " << temp->idArtista << endl;
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        }
+    }
+    
 };
 
 #endif

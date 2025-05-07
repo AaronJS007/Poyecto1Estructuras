@@ -83,13 +83,34 @@ struct listaPlaylist{
             return 0;
         }
         
-        album * temp = primerElemento;
+        playlist * temp = primerElemento;
         int cantidad=0;
         while (temp){
             cantidad++;
             temp = temp->siguienteElemento;
         }
         return cantidad;
+    }
+
+    void playlistMasCanciones(){
+        playlist * temp = primerElemento;
+        string nombre = "";
+        int cantidad = 0;
+        int cantidad2 = 0;
+        while (temp){
+            cantidad2 = temp->lstCanciones->cantidadCanciones();
+            if ( cantidad2 > cantidad)
+            {
+                cantidad=cantidad2;
+                nombre=temp->nombre;
+            }
+           temp=temp->siguienteElemento;
+        }
+        if(cantidad!=0){
+            cout << "La playlist con mas canciones es: " << nombre << "\n";
+        }else{
+            cout << "No hay playlist con canciones \n";
+        } 
     }
 };
 

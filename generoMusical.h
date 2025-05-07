@@ -6,6 +6,7 @@ using namespace std;
 struct generoMusical{
     int IdGeneroMusical;
     string nombre, descripcion;
+    listaCanciones* lstCanciones;
     generoMusical * siguienteElemento;
     generoMusical * anteriorElemento;
 
@@ -13,6 +14,7 @@ struct generoMusical{
         IdGeneroMusical=pId;
         nombre=pNombre;
         descripcion=pDescripcion;
+        lstCanciones =  new listaCanciones();
         siguienteElemento=nullptr;
         anteriorElemento=nullptr;
     }

@@ -9,7 +9,7 @@ using namespace std;
 #include"listaSelloDiscografico.h"
 
 listaCanciones lista_canciones = new listaCanciones();
-listaArtistas lista_Artista = new listaArtistas();
+listaArtistas lista_artista = new listaArtistas();
 listaAlbumes lista_albumes = new listaAlbumes();
 listaGenerosMusicales lista_generos = new listaGenerosMusicales();
 listaPlaylist lista_playlist = new listaPlaylist();
@@ -33,12 +33,12 @@ int obtenerEntero(string mensaje) {
 }
 
 void imprimirTodasLasListas() {
-    listaArtistas->imprimir();
-    listaAlbumes->imprimir();
-    listaCanciones->imprimir();
-    listaGeneros->imprimir();
-    listaPlaylists->imprimir();
-    listaSellos->imprimir();
+    lista_artista->imprimir();
+    lista_albumes->imprimir();
+    lista_canciones->imprimir();
+    lista_generos->imprimir();
+    lista_playlist->imprimir();
+    lista_sellos->imprimir();
 }
 
 void reporteDetalleArtistas() {
@@ -58,40 +58,38 @@ void reporteSellosConArtistas() {
 }
 
 
-void consultaGeneroConMasCanciones() {
-    cout << "Género con más canciones: " << listaGeneros->generoConMasCanciones() << endl;
+void GeneroConMasCanciones() {
+    lista_generos.generoMasCanciones();
 }
 
 void consultaArtistaConMasAlbumes() {
-    cout << "Artista con más álbumes: " << listaArtistas->artistaConMasAlbumes() << endl;
+    lista_artista.artistaMasAlbumes();
 }
 
 void consultaCancionMasLarga() {
-    Cancion* c = listaCanciones->cancionMasLarga();
-    if (c) c->imprimir();
-    else cout << "No hay canciones registradas.\n";
+    lista_canciones.cancionMasLarga();
 }
 
-void consultaPlaylistMasCanciones() {
-    cout << "Playlist con más canciones: " << listaPlaylists->playlistMasCanciones() << endl;
+void PlaylistMasCanciones() {
+    lista_playlist.playlistMasCanciones();
 }
 
-void consultaAlbumesPorArtista() {
-    listaArtistas->imprimirAlbumesPorArtista();
+void CantidadAlbumesPorArtista() {
+    lista_artista.CantidadAlbumesPorArtista();
 }
 
 void consultaSelloMasArtistas() {
-    cout << "Sello con más artistas firmados: " << listaSellos->selloConMasArtistas() << endl;
+    lista_sellos.selloConMasArtistas();
 }
 
 void consultaCancionesPorAnio() {
-    int anio = obtenerEntero("Ingrese el año: ");
-    listaCanciones->imprimirCancionesPorAnio(anio);
+    int anno = obtenerEntero("Ingrese el año: ");
+    lista_canciones.cancionesPublicadas(anno);
 }
 
 void consultaAlbumesConMasCanciones() {
-    int minimo = obtenerEntero("Ingrese número mínimo de canciones: ");
-    listaAlbumes->imprimirConMasDeXCanciones(minimo);
+    int numero = obtenerEntero("Ingrese el numero de canciones a superar: ");
+    lista_albumes.AlbumesConCancionesMayores(numero);
 }
 
 
