@@ -153,7 +153,7 @@ struct listaGenerosMusicales
         int cantidad = 0;
     
         do {
-            int cantidad2 = temp->lstCanciones->cantidad();  // asumimos que existe el método cantidad()
+            int cantidad2 = temp->lstCanciones->cantidadCanciones();  // asumimos que existe el método cantidad()
             if (cantidad2 > cantidad) {
                 cantidad = cantidad2;
                 nombre = temp->nombre;

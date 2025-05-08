@@ -8,12 +8,12 @@ using namespace std;
 #include"listaPlaylist.h"
 #include"listaSelloDiscografico.h"
 
-listaCanciones lista_canciones = new listaCanciones();
-listaArtistas lista_artista = new listaArtistas();
-listaAlbumes lista_albumes = new listaAlbumes();
-listaGenerosMusicales lista_generos = new listaGenerosMusicales();
-listaPlaylist lista_playlist = new listaPlaylist();
-listaSelloDiscografico lista_sellos = new listaSelloDiscografico();
+listaCanciones* lista_canciones = new listaCanciones();
+listaArtistas* lista_artista = new listaArtistas();
+listaAlbumes* lista_albumes = new listaAlbumes();
+listaGenerosMusicales* lista_generos = new listaGenerosMusicales();
+listaPlaylist* lista_playlist = new listaPlaylist();
+listaSelloDiscografico* lista_sellos = new listaSelloDiscografico();
 
 
 int obtenerEntero(string mensaje) {
@@ -36,61 +36,86 @@ void imprimirTodasLasListas() {
     lista_artista->imprimir();
     lista_albumes->imprimir();
     lista_canciones->imprimir();
-    lista_generos->imprimir();
-    lista_playlist->imprimir();
-    lista_sellos->imprimir();
+    //lista_generos imprimir();
+    //lista_playlist imprimir();
+    //lista_sellos imprimir();
 }
 
 void reporteDetalleArtistas() {
-    listaArtistas->imprimirConDetalle();
+    //listaArtistas->imprimirConDetalle();
 }
 
 void reportePlaylists() {
-    listaPlaylists->imprimirConCanciones();
+    //listaPlaylists->imprimirConCanciones();
 }
 
 void reporteAlbumesOrdenados() {
-    listaAlbumes->imprimirOrdenadosPorDuracion();
+    //listaAlbumes->imprimirOrdenadosPorDuracion();
 }
 
 void reporteSellosConArtistas() {
-    listaSellos->imprimirConArtistas();
+    //listaSellos->imprimirConArtistas();
 }
 
 
 void GeneroConMasCanciones() {
-    lista_generos.generoMasCanciones();
+    lista_generos->generoMasCanciones();
 }
 
-void consultaArtistaConMasAlbumes() {
-    lista_artista.artistaMasAlbumes();
+void ArtistaConMasAlbumes() {
+    lista_artista->artistaMasAlbumes();
 }
 
-void consultaCancionMasLarga() {
-    lista_canciones.cancionMasLarga();
+void CancionMasLarga() {
+    lista_canciones->cancionMasLarga();
 }
 
 void PlaylistMasCanciones() {
-    lista_playlist.playlistMasCanciones();
+    lista_playlist->playlistMasCanciones();
 }
 
 void CantidadAlbumesPorArtista() {
-    lista_artista.CantidadAlbumesPorArtista();
+    lista_artista->CantidadAlbumesPorArtista();
 }
 
-void consultaSelloMasArtistas() {
-    lista_sellos.selloConMasArtistas();
+void SelloMasArtistas() {
+    lista_sellos->selloConMasArtistas();
 }
 
-void consultaCancionesPorAnio() {
+void CancionesPorAnio() {
     int anno = obtenerEntero("Ingrese el año: ");
-    lista_canciones.cancionesPublicadas(anno);
+    lista_canciones->cancionesPublicadas(anno);
 }
 
-void consultaAlbumesConMasCanciones() {
+void AlbumesConMasCanciones() {
     int numero = obtenerEntero("Ingrese el numero de canciones a superar: ");
-    lista_albumes.AlbumesConCancionesMayores(numero);
+    lista_albumes->AlbumesConCancionesMayores(numero);
 }
+
+void menuCRUD_Artistas() {
+    // Similar a tu `menuGEntrenador`
+}
+
+void menuCRUD_Albumes() {
+    // Similar pero enfocado en agregar, modificar y eliminar álbumes
+}
+
+void menuCRUD_Canciones() {
+    // CRUD para canciones
+}
+
+void menuCRUD_Generos() {
+    // CRUD para géneros musicales
+}
+
+void menuCRUD_Playlists() {
+    // CRUD para playlists y su contenido
+}
+
+void menuCRUD_Sellos() {
+    // CRUD para sellos discográficos
+}
+
 
 
 void menuReportes() {
@@ -136,14 +161,14 @@ void menuConsultas() {
         cin >> opcion;
 
         switch (opcion) {
-            case 1: consultaGeneroConMasCanciones(); break;
-            case 2: consultaArtistaConMasAlbumes(); break;
-            case 3: consultaCancionMasLarga(); break;
-            case 4: consultaPlaylistMasCanciones(); break;
-            case 5: consultaAlbumesPorArtista(); break;
-            case 6: consultaSelloMasArtistas(); break;
-            case 7: consultaCancionesPorAnio(); break;
-            case 8: consultaAlbumesConMasCanciones(); break;
+            case 1: GeneroConMasCanciones(); break;
+            case 2: ArtistaConMasAlbumes(); break;
+            case 3: CancionMasLarga(); break;
+            case 4: PlaylistMasCanciones(); break;
+            case 5: CantidadAlbumesPorArtista(); break;
+            case 6: SelloMasArtistas(); break;
+            case 7: CancionesPorAnio(); break;
+            case 8: AlbumesConMasCanciones(); break;
             case 0: break;
             default: cout << "Opción inválida.\n";
         }

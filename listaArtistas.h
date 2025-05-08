@@ -187,11 +187,10 @@ struct listaArtistas
         artista* temp = primerElemento;
         while (temp) {
             cout << "ID: " << temp->ID << endl;
-            cout << "Título: " << temp->titulo << endl;
-            cout << "Duración: " << temp->duracion << " segundos" << endl;
-            cout << "Año: " << temp->anno << endl;
-            cout << "ID Álbum: " << temp->idAlbum << endl;
-            cout << "ID Artista: " << temp->idArtista << endl;
+            cout << "Nombre artistico: " << temp->nombreArtistico << endl;
+            cout << "Nombre real: " << temp->nombreReal << " segundos" << endl;
+            cout << "Pais: " << temp->pais << endl;
+            cout << "Sello discografico: " << temp->selloDiscografico << endl;
             cout << "--------------------------" << endl;
             temp = temp->siguienteElemento;
         }

@@ -35,7 +35,7 @@ struct listaAlbumes
                 album *temp = primerElemento;
                 while (temp->siguienteElemento != nullptr)
                 {
-                    if (temp->idAlbum == Nuevo->idAlbum)
+                    if (temp->IDAlbum == Nuevo->IDAlbum)
                     {
                         delete Nuevo;
                         return false;
@@ -58,7 +58,7 @@ struct listaAlbumes
         album *temp = primerElemento;
         while (temp)
         {
-            if (temp->idAlbum == ID)
+            if (temp->IDAlbum == ID)
             {
                 temp->titulo = titulo;
                 temp->anno = anno;
@@ -119,12 +119,12 @@ struct listaAlbumes
     void AlbumesConCancionesMayores(int numero){
         album * temp = primerElemento;
         while (temp) {
-            if (temp->lstCanciones->cantidadCanciones>numero)
+            if (temp->numeroCanciones > numero)
             {
             cout << "ID: " << temp->IDAlbum << endl;
             cout << "Título: " << temp->titulo << endl;
             cout << "Año: " << temp->anno << endl;
-            cout << "Numero de Canciones: " << temp->lstCanciones->cantidadCanciones << endl;
+            cout << "Numero de Canciones: " << temp->numeroCanciones << endl;
             cout << "ID Artista: " << temp->idArtista << endl;
             cout << "--------------------------" << endl;
             }
@@ -138,7 +138,7 @@ struct listaAlbumes
             cout << "ID: " << temp->IDAlbum << endl;
             cout << "Título: " << temp->titulo << endl;
             cout << "Año: " << temp->anno << endl;
-            cout << "Numero de Canciones: " << temp->lstCanciones->cantidadCanciones << endl;
+            cout << "Numero de Canciones: " << temp->numeroCanciones << endl;
             cout << "ID Artista: " << temp->idArtista << endl;
             cout << "--------------------------" << endl;
             temp = temp->siguienteElemento;

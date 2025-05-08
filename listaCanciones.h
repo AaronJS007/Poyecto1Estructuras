@@ -116,11 +116,11 @@ struct listaCanciones
         return cantidad;
     }
 
-    cancion cancionMasLarga(){
+    cancion * cancionMasLarga(){
         cancion* respuesta = primerElemento;
         cancion* temp = primerElemento;
         while (temp) {
-            if (temp->duracion>respuesta)
+            if (temp->duracion>respuesta->duracion)
             {
                 respuesta = temp;
             }
