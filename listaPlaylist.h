@@ -12,26 +12,28 @@ struct listaPlaylist{
         primerElemento=nullptr;
     }
 
-    bool incercionInicio(int pId, string pNombre, string pCreador, string pFecha){
-        playlist * nuevo = new playlist(pId,pNombre,pCreador,pFecha);
-        if (primerElemento==nullptr){
-            primerElemento=nuevo;
-        }else{
+    bool incercionInicio(int pId, string pNombre, string pCreador, int pFecha){
+        playlist * nuevo = new playlist(pId, pNombre, pCreador, pFecha);
+        if (primerElemento == nullptr) {
+            primerElemento = nuevo;
+            return true;  
+        } else {
             playlist * temp = primerElemento;
-            while (temp){
-                if (temp->id==pId){
+            while (temp) {
+                if (temp->id == pId) {
                     delete nuevo;
-                    return false;
+                    return false;  
                 }
-                temp=temp->siguienteElemento;
+                temp = temp->siguienteElemento;
             }
-            nuevo->siguienteElemento=primerElemento;
-            primerElemento=nuevo;
-            return true;
+            nuevo->siguienteElemento = primerElemento;
+            primerElemento = nuevo;
+            return true;  
         }
     }
+    
 
-    bool modificar(int pId, string pNombre, string pCreador, string pFecha)
+    bool modificar(int pId, string pNombre, string pCreador)
     {
         playlist *temp = primerElemento;
         while (temp)
@@ -40,7 +42,6 @@ struct listaPlaylist{
             {
                 temp->nombre = pNombre;
                 temp->creador = pCreador;
-                temp->fecha = pFecha;
                 return true;
             }
             temp = temp->siguienteElemento;
@@ -92,6 +93,19 @@ struct listaPlaylist{
         return cantidad;
     }
 
+    playlist * buscar(int id){
+        playlist* respuesta = primerElemento;
+        playlist* temp = primerElemento;
+        while (temp) {
+            if (temp->id==id)
+            {
+                return temp;
+            }
+            temp = temp->siguienteElemento;
+        }
+        return nullptr;
+    }
+
     void playlistMasCanciones(){
         playlist * temp = primerElemento;
         string nombre = "";
@@ -112,6 +126,30 @@ struct listaPlaylist{
             cout << "No hay playlist con canciones \n";
         } 
     }
+
+    void imprimirSimple(){
+        playlist * temp = primerElemento;
+        while (temp) {
+            cout << "ID: " << temp->id << endl;
+            cout << "Nombre: " << temp->nombre << endl;
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        }
+    }
+
+    void imprimir(){
+        playlist * temp = primerElemento;
+        while (temp) {
+            cout << "ID: " << temp->id << endl;
+            cout << "Nombre: " << temp->nombre << endl;
+            cout << "Creado por : " << temp->creador << endl;
+            cout << "Numero de Canciones: " << temp->lstCanciones->cantidadCanciones() << endl;
+            cout << "Fecha de creacion: " << temp->fecha << endl;
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        }
+    }
+
 };
 
 #endif

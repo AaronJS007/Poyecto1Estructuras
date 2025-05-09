@@ -7,11 +7,11 @@ using namespace std;
 struct playlist{
     int id;
     string nombre,creador;
-    string fecha;
+    int fecha;
     listaCanciones * lstCanciones;
     playlist * siguienteElemento;
 
-    playlist(int pId, string pNombre, string pCreador, string pFecha){
+    playlist(int pId, string pNombre, string pCreador, int pFecha){
         id=pId;
         nombre=pNombre;
         creador=pCreador;

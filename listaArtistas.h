@@ -26,9 +26,8 @@ struct listaArtistas
         }
     }
 
-    bool insertarArtista(int ID, string nombreArtistico, string nombreReal, string pais, int selloDiscografico)
+    bool insertarArtista(artista * nuevoArtista)
     {
-        artista *nuevoArtista = new artista(ID, nombreArtistico, nombreReal, pais, selloDiscografico);
 
         if (primerElemento == nullptr)
         {
@@ -40,7 +39,7 @@ struct listaArtistas
 
         while (temp != nullptr)
         {
-            if (temp->ID == ID)
+            if (temp->ID == nuevoArtista->ID)
             {
                 delete nuevoArtista;
                 return false;
@@ -51,7 +50,7 @@ struct listaArtistas
         temp = primerElemento;
         artista *anterior = nullptr;
 
-        while (temp != nullptr && temp->nombreArtistico < nombreArtistico)
+        while (temp != nullptr && temp->nombreArtistico < nuevoArtista->nombreArtistico)
         {
             anterior = temp;
             temp = temp->siguienteElemento;
@@ -77,7 +76,7 @@ struct listaArtistas
         return true;
     }
 
-    bool modificar(int ID, string nombreArtistico, string nombreReal, string pais, int selloDiscografico, listaCanciones * lstCanciones, listaAlbumes * lstAlbumes)
+    bool modificar(int ID, string nombreArtistico, string nombreReal, string pais)
     {
         artista *temp = primerElemento;
         while (temp)
@@ -87,9 +86,6 @@ struct listaArtistas
                 temp->nombreArtistico=nombreArtistico;
                 temp->nombreReal=nombreReal;
                 temp->pais=pais;
-                temp->selloDiscografico=selloDiscografico;
-                temp->lstCanciones=lstCanciones;
-                temp->lstAlbumes=lstAlbumes;
                 return true;
             }
             temp = temp->siguienteElemento;
@@ -173,11 +169,54 @@ struct listaArtistas
         } 
     }
 
+    int buscarArtistaPorNombre(string nombre){
+        artista* temp = primerElemento;
+        while (temp) {
+            if(temp->nombreArtistico==nombre||temp->nombreReal==nombre){
+                return temp->ID;
+            }
+            temp = temp->siguienteElemento;
+        }
+        return -1;
+    }
+
+    bool incertarCancionArtista(cancion* nueva){
+        artista* temp = primerElemento;
+        while (temp) {
+            if(temp->ID==nueva->idArtista){
+                return temp->lstCanciones->incercionInicio(nueva);
+            }
+            temp = temp->siguienteElemento;
+        }
+        return false;
+    }
+
+    bool incertarAlbumArtista(album* nuevo){
+        artista* temp = primerElemento;
+        while (temp) {
+            if(temp->ID==nuevo->idArtista){
+                return temp->lstAlbumes->incercionFinal(nuevo);
+            }
+            temp = temp->siguienteElemento;
+        }
+        return false;
+    }
+
     void CantidadAlbumesPorArtista(){
         artista* temp = primerElemento;
         while (temp) {
             cout << "Nombre artista: " << temp -> nombreArtistico;
             cout << "Cantidad albumes: " << temp->lstAlbumes->cantidad();
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        }
+    }
+
+    void imprimirSimple() {
+        artista* temp = primerElemento;
+        while (temp) {
+            cout << "ID: " << temp->ID << endl;
+            cout << "Nombre artistico: " << temp->nombreArtistico << endl;
             cout << "--------------------------" << endl;
             temp = temp->siguienteElemento;
         }

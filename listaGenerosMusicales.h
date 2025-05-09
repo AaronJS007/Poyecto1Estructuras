@@ -24,7 +24,7 @@ struct listaGenerosMusicales
         }
     }
     
-    bool incercionFinal(int pId, string pNombre, string pDescripcion)
+    bool agregarFinal(int pId, string pNombre, string pDescripcion)
     {
         try
         {
@@ -142,6 +142,22 @@ struct listaGenerosMusicales
         return cantidad;
     }
 
+    bool AgregarCancionGenero(cancion* nueva,string genero){
+        if (primerElemento == nullptr) {
+            cout << "No hay géneros registrados.\n";
+            return false;
+        }
+    
+        generoMusical* temp = primerElemento;
+        do {
+            if (temp->nombre==genero) {
+                return temp->lstCanciones->incercionInicio(nueva);
+            }
+            temp = temp->siguienteElemento;
+        } while (temp != primerElemento);
+        return false;
+    }
+
     void generoMasCanciones() {
         if (primerElemento == nullptr) {
             cout << "No hay géneros registrados.\n";
@@ -166,7 +182,40 @@ struct listaGenerosMusicales
         } else {
             cout << "No hay géneros con canciones.\n";
         }
-    }    
+    }
+    
+    void imprimirSimple() {
+        if (primerElemento == nullptr) {
+            cout << "No hay géneros musicales registrados.\n";
+            return;
+        }
+    
+        generoMusical* temp = primerElemento;
+        do {
+            cout << "ID Género: " << temp->IdGeneroMusical << endl;
+            cout << "Nombre: " << temp->nombre << endl;
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        } while (temp != primerElemento);
+    }
+    
+    void imprimir() {
+        if (primerElemento == nullptr) {
+            cout << "No hay géneros musicales registrados.\n";
+            return;
+        }
+    
+        generoMusical* temp = primerElemento;
+        do {
+            cout << "ID Género: " << temp->IdGeneroMusical << endl;
+            cout << "Nombre: " << temp->nombre << endl;
+            cout << "Descripción: " << temp->descripcion << endl;
+            cout << "Cantidad de canciones: " << (temp->lstCanciones ? temp->lstCanciones->cantidadCanciones() : 0) << endl;
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        } while (temp != primerElemento);
+    }
+    
 
 };    
 

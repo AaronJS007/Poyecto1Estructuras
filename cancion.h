@@ -4,11 +4,12 @@
 using namespace std;
 
 struct cancion{
-    int ID, duracion, anno, idAlbum, idArtista;
+    int ID,anno, idAlbum, idArtista;
+    float duracion;
     string titulo;
     cancion * siguienteElemento;
 
-    cancion(int pId,string pTitulo, int pDuracion, int pAnno, int pIdAlbum, int pIdArtista){
+    cancion(int pId,string pTitulo, float pDuracion, int pAnno, int pIdAlbum, int pIdArtista){
         ID=pId;
         titulo=pTitulo;
         duracion=pDuracion;

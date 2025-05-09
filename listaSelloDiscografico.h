@@ -63,7 +63,7 @@ struct listaSelloDiscografico
         }
     }
     
-    bool modificar(int pId, string pNombre, string pPais,int pAnno)
+    bool modificar(int pId, string pNombre, string pPais)
     {
         if (primerElemento == nullptr)
             return false;
@@ -75,7 +75,6 @@ struct listaSelloDiscografico
             {
                 temp->nombre = pNombre;
                 temp->pais = pPais;
-                temp->annoFundacion=pAnno;
                 return true;
             }
             temp = temp->siguienteElemento;
@@ -168,6 +167,73 @@ struct listaSelloDiscografico
         } else {
             cout << "No hay artistas registrados en los sellos.\n";
         }
+    }
+
+    bool ExisteElSello(int id){
+        if (primerElemento == nullptr) {
+            cout << "No hay sellos discográficos registrados.\n";
+            return false;
+        }
+    
+        selloDiscografico* temp = primerElemento;
+    
+        do {
+            if (temp->id == id) {
+                return true;
+            }
+            temp = temp->siguienteElemento;
+        } while (temp != primerElemento);
+        return false;
+    }
+    bool AgregarArtistaAlSello(artista* nuevo){
+        if (primerElemento == nullptr) {
+            cout << "No hay sellos discográficos registrados.\n";
+            return false;
+        }
+    
+        selloDiscografico* temp = primerElemento;
+    
+        do {
+            if (temp->id == nuevo->selloDiscografico) {
+                return (temp->lstArtistas->insertarArtista(nuevo));
+            }
+            temp = temp->siguienteElemento;
+        } while (temp != primerElemento);
+        return false;
+    }
+
+    void imprimirSimple() {
+        if (primerElemento == nullptr) {
+            cout << "No hay géneros musicales registrados.\n";
+            return;
+        }
+    
+        selloDiscografico* temp = primerElemento;
+        do {
+            cout << "ID sello: " << temp->id << endl;
+            cout << "Nombre: " << temp->nombre << endl;
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        } while (temp != primerElemento);
+    }
+
+    void imprimir() {
+        if (primerElemento == nullptr) {
+            cout << "No hay géneros musicales registrados.\n";
+            return;
+        }
+    
+        selloDiscografico* temp = primerElemento;
+        do {
+            cout << "ID sello: " << temp->id << endl;
+            cout << "Nombre: " << temp->nombre << endl;
+            cout << "pais: " << temp->pais << endl;
+            cout << "año de fundacion: " << temp->annoFundacion << endl;
+            cout << "Cantidad de artistas: " << (temp->lstArtistas ? temp->lstArtistas->cantidad() : 0) << endl;
+            temp->lstArtistas->imprimirSimple();
+            cout << "--------------------------" << endl;
+            temp = temp->siguienteElemento;
+        } while (temp != primerElemento);
     }
     
 };    

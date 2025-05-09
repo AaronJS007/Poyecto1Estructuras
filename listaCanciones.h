@@ -21,11 +21,10 @@ struct listaCanciones
         }
     }
 
-    bool incercionInicio(int ID, string titulo, int duracion, int año, int idAlbum, int idArtista)
+    bool incercionInicio(cancion * Nuevo)
     {
         try
         {
-            cancion *Nuevo = new cancion(ID, titulo, duracion, año, idAlbum, idArtista);
             if (primerElemento == nullptr)
             {
                 primerElemento = Nuevo;
@@ -37,7 +36,6 @@ struct listaCanciones
                 {
                     if (temp->ID == Nuevo->ID)
                     {
-                        delete Nuevo;
                         return false;
                     }
                     temp = temp->siguienteElemento;
@@ -54,7 +52,7 @@ struct listaCanciones
         }
     }
 
-    bool modificar(int ID, string nuevoTitulo, int nuevaDuracion, int nuevoAnno, int nuevoIdAlbum, int nuevoIdArtista)
+    bool modificar(int ID, string nuevoTitulo, int nuevaDuracion, int nuevoAnno)
     {
         cancion *temp = primerElemento;
         while (temp)
@@ -64,8 +62,6 @@ struct listaCanciones
                 temp->titulo = nuevoTitulo;
                 temp->duracion = nuevaDuracion;
                 temp->anno = nuevoAnno;
-                temp->idAlbum = nuevoIdAlbum;
-                temp->idArtista = nuevoIdArtista;
                 return true;
             }
             temp = temp->siguienteElemento;
@@ -130,6 +126,19 @@ struct listaCanciones
         return respuesta;
     }
 
+    cancion * buscar(int id){
+        cancion* respuesta = primerElemento;
+        cancion* temp = primerElemento;
+        while (temp) {
+            if (temp->ID==id)
+            {
+                return temp;
+            }
+            temp = temp->siguienteElemento;
+        }
+        return nullptr;
+    }
+
     void cancionesPublicadas(int anno){
         cancion* temp = primerElemento;
         while (temp) {
@@ -142,6 +151,16 @@ struct listaCanciones
             cout << "ID Artista: " << temp->idArtista << endl;
             cout << "--------------------------" << endl;
             }
+            temp = temp->siguienteElemento;
+        }
+    }
+
+    void imprimirSimple() {
+        cancion* temp = primerElemento;
+        while (temp) {
+            cout << "ID: " << temp->ID << endl;
+            cout << "Título: " << temp->titulo << endl;
+            cout << "--------------------------" << endl;
             temp = temp->siguienteElemento;
         }
     }

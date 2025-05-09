@@ -21,11 +21,10 @@ struct listaAlbumes
         }
     }
 
-    bool incercionFinal(int ID,string titulo,int anno, int numeroCanciones, int IDArtista)
+    bool incercionFinal(album*Nuevo)
     {
         try
         {
-            album *Nuevo = new album(ID, titulo, anno, numeroCanciones, IDArtista);
             if (primerElemento == nullptr)
             {
                 primerElemento = Nuevo;
@@ -37,7 +36,6 @@ struct listaAlbumes
                 {
                     if (temp->IDAlbum == Nuevo->IDAlbum)
                     {
-                        delete Nuevo;
                         return false;
                     }
                     temp = temp->siguienteElemento;
@@ -53,7 +51,7 @@ struct listaAlbumes
         }
     }
 
-    bool modificar(int ID,string titulo,int anno, int numeroCanciones, int IDArtista, listaCanciones * lstcanciones)
+    bool modificar(int ID,string titulo,int anno)
     {
         album *temp = primerElemento;
         while (temp)
@@ -62,10 +60,8 @@ struct listaAlbumes
             {
                 temp->titulo = titulo;
                 temp->anno = anno;
-                temp->numeroCanciones=numeroCanciones;
+                temp->numeroCanciones=temp->lstCanciones->cantidadCanciones();
                 temp->lstCanciones;
-                temp->idArtista = IDArtista;
-                temp->lstCanciones = lstcanciones;
                 return true;
             }
             temp = temp->siguienteElemento;
@@ -116,6 +112,28 @@ struct listaAlbumes
         return cantidad;
     }
 
+    int buscarArtistaPorNombre(string nombre){
+        album* temp = primerElemento;
+        while (temp) {
+            if(temp->titulo==nombre){
+                return temp->IDAlbum;
+            }
+            temp = temp->siguienteElemento;
+        }
+        return -1;
+    }
+
+    bool incertarCancionAlbum(cancion* nueva){
+        album* temp = primerElemento;
+        while (temp) {
+            if(temp->idArtista==nueva->idArtista){
+                return temp->lstCanciones->incercionInicio(nueva);
+            }
+            temp = temp->siguienteElemento;
+        }
+        return false;
+    }
+
     void AlbumesConCancionesMayores(int numero){
         album * temp = primerElemento;
         while (temp) {
@@ -128,6 +146,16 @@ struct listaAlbumes
             cout << "ID Artista: " << temp->idArtista << endl;
             cout << "--------------------------" << endl;
             }
+            temp = temp->siguienteElemento;
+        }
+    }
+
+    void imprimirSimple(){
+        album * temp = primerElemento;
+        while (temp) {
+            cout << "ID: " << temp->IDAlbum << endl;
+            cout << "Título: " << temp->titulo << endl;
+            cout << "--------------------------" << endl;
             temp = temp->siguienteElemento;
         }
     }
