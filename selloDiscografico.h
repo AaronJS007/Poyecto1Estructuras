@@ -20,7 +20,9 @@ struct selloDiscografico{
         siguienteElemento=nullptr;
         anteriorElemento=nullptr;
     }
-    ~selloDiscografico();
+    ~selloDiscografico(){
+        delete lstArtistas;
+    };
 };
 
 

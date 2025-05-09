@@ -18,7 +18,9 @@ struct generoMusical{
         siguienteElemento=nullptr;
         anteriorElemento=nullptr;
     }
-    ~generoMusical();
+    ~generoMusical(){
+        delete lstCanciones;
+    };
 
 };
 

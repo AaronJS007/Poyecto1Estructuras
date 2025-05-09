@@ -21,7 +21,9 @@ struct album
         lstCanciones = new listaCanciones();
         siguienteElemento = nullptr;
     }
-    ~album();
+    ~album(){
+        delete lstCanciones;
+    };
 };
 
 #endif

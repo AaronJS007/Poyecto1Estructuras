@@ -24,7 +24,10 @@ struct artista{
         siguienteElemento=nullptr;
         anteriorElemento=nullptr;
     }
-    ~artista();
+    ~artista(){
+        delete lstCanciones;
+        delete lstAlbumes;
+    };
 
 };
 

@@ -18,7 +18,9 @@ struct cancion{
         idArtista=pIdArtista;
         siguienteElemento=nullptr;
     }
-    ~cancion();
+    ~cancion(){
+
+    }
 
 };
 

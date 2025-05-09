@@ -19,7 +19,9 @@ struct playlist{
         lstCanciones = new listaCanciones();
         siguienteElemento=nullptr;
     }
-    ~playlist();
+    ~playlist(){
+        delete lstCanciones;
+    };
 };
 
 
