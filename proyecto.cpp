@@ -25,7 +25,7 @@ int obtenerEntero(string mensaje)
 
         if (cin.fail())
         {
-            cout << "Error: Ingrese solo números enteros.\n";
+            cout << "Error: Ingrese solo numeros enteros.\n";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Descarta la entrada incorrecta
         }
@@ -104,7 +104,7 @@ void SelloMasArtistas()
 
 void CancionesPorAnio()
 {
-    int anno = obtenerEntero("Ingrese el año: ");
+    int anno = obtenerEntero("Ingrese el anio: ");
     lista_canciones->cancionesPublicadas(anno);
 }
 
@@ -128,14 +128,14 @@ void agregarCancionesPlaylist(){
         idCancion = obtenerEntero("Digite el ID de la cancion que desea agregar (0 para salir): ");
         if (idCancion == 0) break;
 
-        cancion * cancion = lista_canciones->buscar(idCancion); // método para buscar canción por ID
+        cancion * cancion = lista_canciones->buscar(idCancion); // metodo para buscar cancion por ID
         if (cancion == nullptr) {
-            cout << "Canción no encontrada.\n";
+            cout << "Cancion no encontrada.\n";
         } else {
             if (pl->lstCanciones->incercionInicio(cancion)) {
-                cout << "Canción agregada exitosamente a la playlist.\n";
+                cout << "Cancion agregada exitosamente a la playlist.\n";
             } else {
-                cout << "La canción ya está en la playlist o ocurrió un error.\n";
+                cout << "La cancion ya esta en la playlist o ocurrio un error.\n";
             }
         }
     }
@@ -171,7 +171,7 @@ void crearArtista()
     }
     else
     {
-        cout << "No hay un sello con el id: " << nuevo->selloDiscografico;
+        cout << "\nNo hay un sello con el ID: " << nuevo->selloDiscografico;
         delete nuevo;
     }
 }
@@ -181,47 +181,47 @@ void crearGenero(cancion* nueva)
     string nombre, descripcion;
 
     cin.ignore();
-    cout << "Digite el nombre del Género: ";
+    cout << "Digite el nombre del Genero: ";
     cin >> nombre;
 
     if (nueva != nullptr)
     {
         if (lista_generos->AgregarCancionGenero(nueva, nombre))
         {
-            cout << "Canción agregada con éxito.\n";
+            cout << "Cancion agregada con exito.\n";
         }
         else
         {
             int opcion;
             while (true)
             {
-                cout << "\n--- No existe el género ---\n";
-                cout << "1. Agregar nuevo género\n";
-                cout << "0. Volver al menú principal\n";
-                cout << "Seleccione una opción: ";
+                cout << "\n--- No existe el genero ---\n";
+                cout << "1. Agregar nuevo genero\n";
+                cout << "0. Volver al menu principal\n";
+                cout << "Seleccione una opcion: ";
                 cin >> opcion;
 
                 if (opcion == 1)
                 {
-                    IdGeneroMusical = obtenerEntero("Digite el ID del nuevo género: ");
+                    IdGeneroMusical = obtenerEntero("Digite el ID del nuevo genero: ");
                     cin.ignore(); 
-                    cout << "Digite la descripción del género: ";
+                    cout << "Digite la descripcion del genero: ";
                     cin >> descripcion;
 
                     if (lista_generos->agregarFinal(IdGeneroMusical,nombre,descripcion))
                     {
                         if (lista_generos->AgregarCancionGenero(nueva, nombre))
                         {
-                            cout << "Se agregó correctamente el género y la canción.\n";
+                            cout << "Se agrego correctamente el genero y la cancion.\n";
                         }
                         else
                         {
-                            cout << "Error al agregar la canción al género.\n";
+                            cout << "Error al agregar la cancion al genero.\n";
                         }
                     }
                     else
                     {
-                        cout << "No se pudo agregar el género.\n";
+                        cout << "No se pudo agregar el genero.\n";
                     }
                     break;
                 }
@@ -231,24 +231,24 @@ void crearGenero(cancion* nueva)
                 }
                 else
                 {
-                    cout << "Opción inválida. Intente de nuevo.\n";
+                    cout << "Opcion invalida. Intente de nuevo.\n";
                 }
             }
         }
     }
     else
     {
-        IdGeneroMusical = obtenerEntero("Digite el ID del nuevo género: ");
+        IdGeneroMusical = obtenerEntero("Digite el ID del nuevo genero: ");
         cin.ignore();
-        cout << "Digite la descripción del género: ";
+        cout << "Digite la descripcion del genero: ";
         cin >> descripcion;
 
         if (lista_generos->agregarFinal(IdGeneroMusical, nombre, descripcion)){
-            cout << "Género agregado correctamente.\n";
+            cout << "Genero agregado correctamente.\n";
         }
         else
         {
-            cout << "No se pudo agregar el género.\n";
+            cout << "No se pudo agregar el genero.\n";
         }
     }
 }
@@ -258,13 +258,13 @@ void crearCancion()
     float duracion;
     string titulo, compositor, nombreAlbum;
 
-    id = obtenerEntero("Ingrese ID de la canción: ");
+    id = obtenerEntero("Ingrese ID de la cancion: ");
     cin.ignore();
-    cout << "Ingrese título de la canción: ";
+    cout << "Ingrese titulo de la cancion: ";
     cin >> titulo;
-    duracion = obtenerEntero("Ingrese duración (en minutos): ");
+    duracion = obtenerEntero("Ingrese duracion (en minutos): ");
     cin.ignore();
-    anno = obtenerEntero("Ingrese el año que se creo");
+    anno = obtenerEntero("Ingrese el anio que se creo: ");
     cout << "Ingrese nombre del compositor: ";
     cin >> compositor;
     idArtista = lista_artista->buscarArtistaPorNombre(compositor);
@@ -301,12 +301,12 @@ void crearAlbum()
     string titulo, nombreArtista;
     IDAlbum = obtenerEntero("Ingrese ID del album: ");
     cin.ignore();
-    cout << "Ingrese título del Album: ";
+    cout << "Ingrese titulo del Album: ";
     cin >> titulo;
     cout << "Ingrese el nombre del artista: ";
     cin >> nombreArtista;
     idArtista = lista_artista->buscarArtistaPorNombre(nombreArtista);
-    anno = obtenerEntero("Ingrese el año que se creo");
+    anno = obtenerEntero("Ingrese el anio que se creo: ");
 
     album *nuevo = new album(IDAlbum, titulo, anno, 0, idArtista);
 
@@ -314,7 +314,7 @@ void crearAlbum()
     {
         if (lista_albumes->incercionFinal(nuevo))
         {
-            cout << "album agregado exitosamente.\n";
+            cout << "Album agregado exitosamente.\n";
         }
         else
         {
@@ -332,8 +332,8 @@ void crearPlaylist()
 {
     int Id, Fecha;
     string Nombre,Creador;
-    Id=obtenerEntero("digite el ID de la playlist: ");
-    Fecha=obtenerEntero("Digite el año en que se creo: ");
+    Id=obtenerEntero("Digite el ID de la playlist: ");
+    Fecha=obtenerEntero("Digite el anio en que se creo: ");
     cout << "Digite el nombre de la playlist: "; 
     getline(cin,Nombre);
     cout << "Digite el nombre del autor de la playlist: ";
@@ -348,19 +348,19 @@ void crearSello() {
     int Id, Anno;
     string Nombre, Pais;
 
-    Id = obtenerEntero("Ingrese el ID del sello discográfico: ");
+    Id = obtenerEntero("Ingrese el ID del sello discografico: ");
     cin.ignore();
 
     cout << "Ingrese el nombre del sello: ";
     getline(cin, Nombre);
 
-    cout << "Ingrese el país del sello: ";
+    cout << "Ingrese el pais del sello: ";
     getline(cin, Pais);
 
-    Anno = obtenerEntero("Ingrese el año de fundación del sello: ");
+    Anno = obtenerEntero("Ingrese el anio de fundacion del sello: ");
 
     if (lista_sellos->incercionFinal(Id, Nombre, Pais, Anno)) {
-        cout << "Sello discográfico agregado exitosamente.\n";
+        cout << "Sello discografico agregado exitosamente.\n";
     } else {
         cout << "Ya existe un sello con ese ID o hubo un error al insertar.\n";
     }
@@ -372,10 +372,10 @@ void modificarArtista()
 {
     int id;
     string nombreArtistico, nombreReal, pais;
-    id=obtenerEntero("Digite el id del artista");
-    cout << "Digite el nuevo nombre artístico: ";
+    id=obtenerEntero("Digite el id del artista: ");
+    cout << "Digite el nuevo nombre artistico: ";
     cin >> nombreArtistico;
-    cout << "Digite el nuevo nombre artístico: ";
+    cout << "Digite el nuevo nombre artistico: ";
     cin >> nombreReal;
     cout << "Digite el nuevo pais: ";
     cin >> pais;
@@ -389,17 +389,17 @@ void modificarCancion() {
     int id, duracion, anio;
     string titulo;
 
-    id = obtenerEntero("Digite el ID de la canción: ");
+    id = obtenerEntero("Digite el ID de la cancion: ");
     cin.ignore();
-    cout << "Digite el nuevo título: ";
+    cout << "Digite el nuevo titulo: ";
     getline(cin, titulo);
-    duracion = obtenerEntero("Digite la nueva duración en minutos: ");
-    anio = obtenerEntero("Digite el nuevo año de publicación: ");
+    duracion = obtenerEntero("Digite la nueva duracion en minutos: ");
+    anio = obtenerEntero("Digite el nuevo anio de publicacion: ");
 
     if (lista_canciones->modificar(id, titulo, duracion, anio)) {
-        cout << "Canción modificada correctamente.\n";
+        cout << "Cancion modificada correctamente.\n";
     } else {
-        cout << "Algo salió mal o la canción no existe.\n";
+        cout << "Algo salio mal o la cancion no existe.\n";
     }
 }
 
@@ -408,16 +408,16 @@ void modificarAlbum() {
     string titulo;
     int anio;
 
-    id = obtenerEntero("Digite el ID del álbum: ");
+    id = obtenerEntero("Digite el ID del album: ");
     cin.ignore();
-    cout << "Digite el nuevo título del álbum: ";
+    cout << "Digite el nuevo titulo del album: ";
     getline(cin, titulo);
-    anio = obtenerEntero("Digite el nuevo año de lanzamiento: ");
+    anio = obtenerEntero("Digite el nuevo anio de lanzamiento: ");
 
     if (lista_albumes->modificar(id, titulo, anio)) {
-        cout << "Álbum modificado correctamente.\n";
+        cout << "album modificado correctamente.\n";
     } else {
-        cout << "Algo salió mal o el álbum no existe.\n";
+        cout << "Algo salio mal o el album no existe.\n";
     }
 }
 
@@ -425,17 +425,17 @@ void modificarGenero() {
     int id;
     string nombre, descripcion;
 
-    id = obtenerEntero("Digite el ID del género: ");
+    id = obtenerEntero("Digite el ID del genero: ");
     cin.ignore();
-    cout << "Digite el nuevo nombre del género: ";
+    cout << "Digite el nuevo nombre del genero: ";
     getline(cin, nombre);
-    cout << "Digite la nueva descripción: ";
+    cout << "Digite la nueva descripcion: ";
     getline(cin, descripcion);
 
     if (lista_generos->modificar(id, nombre, descripcion)) {
-        cout << "Género modificado correctamente.\n";
+        cout << "Genero modificado correctamente.\n";
     } else {
-        cout << "Algo salió mal o el género no existe.\n";
+        cout << "Algo salio mal o el genero no existe.\n";
     }
 }
 
@@ -453,7 +453,7 @@ void modificarPlaylist() {
     if (lista_playlist->modificar(id, nombre,creador)) {
         cout << "Playlist modificada correctamente.\n";
     } else {
-        cout << "Algo salió mal o la playlist no existe.\n";
+        cout << "Algo salio mal o la playlist no existe.\n";
     }
 }
 
@@ -461,17 +461,17 @@ void modificarSello() {
     int id;
     string nombre, pais;
 
-    id = obtenerEntero("Digite el ID del sello discográfico: ");
+    id = obtenerEntero("Digite el ID del sello discografico: ");
     cin.ignore();
     cout << "Digite el nuevo nombre del sello: ";
     getline(cin, nombre);
-    cout << "Digite el nuevo país del sello: ";
+    cout << "Digite el nuevo pais del sello: ";
     getline(cin, pais);
 
     if (lista_sellos->modificar(id, nombre, pais)) {
         cout << "Sello modificado correctamente.\n";
     } else {
-        cout << "Algo salió mal o el sello no existe.\n";
+        cout << "Algo salio mal o el sello no existe.\n";
     }
 }
 
@@ -812,12 +812,12 @@ void menuReportes()
     {
         cout << "\n--- REPORTES ---\n";
         cout << "1. Imprimir todas las listas\n";
-        cout << "2. Detalle de artistas con álbumes, canciones y sello\n";
+        cout << "2. Detalle de artistas con albumes, canciones y sello\n";
         cout << "3. Listado de playlists y sus canciones\n";
-        cout << "4. Álbumes con canciones ordenadas por duración\n";
+        cout << "4. Albumes con canciones ordenadas por duracion\n";
         cout << "5. Sellos y sus artistas firmados\n";
         cout << "0. Volver\n";
-        cout << "Seleccione una opción: ";
+        cout << "Seleccione una opcion: ";
         cin >> opcion;
 
         switch (opcion)
@@ -840,7 +840,7 @@ void menuReportes()
         case 0:
             break;
         default:
-            cout << "Opción inválida.\n";
+            cout << "Opcion invalida.\n";
         }
     } while (opcion != 0);
 }
@@ -851,16 +851,16 @@ void menuConsultas()
     do
     {
         cout << "\n--- CONSULTAS ---\n";
-        cout << "1. Género con más canciones\n";
-        cout << "2. Artista con más álbumes\n";
-        cout << "3. Canción más larga\n";
-        cout << "4. Playlist con más canciones\n";
-        cout << "5. Álbumes por artista\n";
-        cout << "6. Sello con más artistas\n";
-        cout << "7. Canciones por año\n";
-        cout << "8. Álbumes con más de X canciones\n";
+        cout << "1. Genero con mas canciones\n";
+        cout << "2. Artista con mas albumes\n";
+        cout << "3. Cancion mas larga\n";
+        cout << "4. Playlist con mas canciones\n";
+        cout << "5. Albumes por artista\n";
+        cout << "6. Sello con mas artistas\n";
+        cout << "7. Canciones por anio\n";
+        cout << "8. Albumes con mas de X canciones\n";
         cout << "0. Volver\n";
-        cout << "Seleccione una opción: ";
+        cout << "Seleccione una opcion: ";
         cin >> opcion;
 
         switch (opcion)
@@ -892,7 +892,7 @@ void menuConsultas()
         case 0:
             break;
         default:
-            cout << "Opción inválida.\n";
+            cout << "Opcion invalida.\n";
         }
     } while (opcion != 0);
 }
@@ -904,13 +904,13 @@ void menuMantenimiento()
     {
         cout << "\n--- MANTENIMIENTO ---\n";
         cout << "1. Artistas\n";
-        cout << "2. Álbumes\n";
+        cout << "2. Albumes\n";
         cout << "3. Canciones\n";
-        cout << "4. Géneros Musicales\n";
+        cout << "4. Generos Musicales\n";
         cout << "5. Playlists\n";
-        cout << "6. Sellos Discográficos\n";
+        cout << "6. Sellos Discograficos\n";
         cout << "0. Volver\n";
-        cout << "Seleccione una opción: ";
+        cout << "Seleccione una opcion: ";
         cin >> opcion;
 
         switch (opcion)
@@ -936,7 +936,7 @@ void menuMantenimiento()
         case 0:
             break;
         default:
-            cout << "Opción inválida.\n";
+            cout << "Opcion invalida.\n";
         }
     } while (opcion != 0);
 }
@@ -946,12 +946,12 @@ void menuPrincipal()
     int opcion;
     do
     {
-        cout << "\n====== MENÚ PRINCIPAL ======\n";
+        cout << "\n====== MENU PRINCIPAL ======\n";
         cout << "1. Mantenimiento\n";
         cout << "2. Consultas\n";
         cout << "3. Reportes\n";
         cout << "0. Salir\n";
-        cout << "Seleccione una opción: ";
+        cout << "Seleccione una opcion: ";
         cin >> opcion;
 
         switch (opcion)
@@ -969,7 +969,7 @@ void menuPrincipal()
             cout << "Saliendo del sistema...\n";
             break;
         default:
-            cout << "Opción inválida.\n";
+            cout << "Opcion invalida.\n";
         }
     } while (opcion != 0);
 }

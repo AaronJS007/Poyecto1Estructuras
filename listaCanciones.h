@@ -144,10 +144,10 @@ struct listaCanciones
         while (temp) {
             if (temp->anno==anno){
             cout << "ID: " << temp->ID << endl;
-            cout << "Título: " << temp->titulo << endl;
-            cout << "Duración: " << temp->duracion << " segundos" << endl;
-            cout << "Año: " << temp->anno << endl;
-            cout << "ID Álbum: " << temp->idAlbum << endl;
+            cout << "Titulo: " << temp->titulo << endl;
+            cout << "Duracion: " << temp->duracion << " segundos" << endl;
+            cout << "Anio: " << temp->anno << endl;
+            cout << "ID Album: " << temp->idAlbum << endl;
             cout << "ID Artista: " << temp->idArtista << endl;
             cout << "--------------------------" << endl;
             }
@@ -159,7 +159,7 @@ struct listaCanciones
         cancion* temp = primerElemento;
         while (temp) {
             cout << "ID: " << temp->ID << endl;
-            cout << "Título: " << temp->titulo << endl;
+            cout << "Titulo: " << temp->titulo << endl;
             cout << "--------------------------" << endl;
             temp = temp->siguienteElemento;
         }
@@ -169,10 +169,10 @@ struct listaCanciones
         cancion* temp = primerElemento;
         while (temp) {
             cout << "ID: " << temp->ID << endl;
-            cout << "Título: " << temp->titulo << endl;
-            cout << "Duración: " << temp->duracion << " segundos" << endl;
-            cout << "Año: " << temp->anno << endl;
-            cout << "ID Álbum: " << temp->idAlbum << endl;
+            cout << "Titulo: " << temp->titulo << endl;
+            cout << "Duracion: " << temp->duracion << " segundos" << endl;
+            cout << "Anio: " << temp->anno << endl;
+            cout << "ID Album: " << temp->idAlbum << endl;
             cout << "ID Artista: " << temp->idArtista << endl;
             cout << "--------------------------" << endl;
             temp = temp->siguienteElemento;

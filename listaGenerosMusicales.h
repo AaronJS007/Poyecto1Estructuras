@@ -144,7 +144,7 @@ struct listaGenerosMusicales
 
     bool AgregarCancionGenero(cancion* nueva,string genero){
         if (primerElemento == nullptr) {
-            cout << "No hay géneros registrados.\n";
+            cout << "No hay generos registrados.\n";
             return false;
         }
     
@@ -160,7 +160,7 @@ struct listaGenerosMusicales
 
     void generoMasCanciones() {
         if (primerElemento == nullptr) {
-            cout << "No hay géneros registrados.\n";
+            cout << "No hay generos registrados.\n";
             return;
         }
     
@@ -178,21 +178,21 @@ struct listaGenerosMusicales
         } while (temp != primerElemento);
     
         if (cantidad != 0) {
-            cout << "El género con más canciones es: " << nombre << " (" << cantidad << " canciones)\n";
+            cout << "El genero con más canciones es: " << nombre << " (" << cantidad << " canciones)\n";
         } else {
-            cout << "No hay géneros con canciones.\n";
+            cout << "No hay generos con canciones.\n";
         }
     }
     
     void imprimirSimple() {
         if (primerElemento == nullptr) {
-            cout << "No hay géneros musicales registrados.\n";
+            cout << "No hay generos musicales registrados.\n";
             return;
         }
     
         generoMusical* temp = primerElemento;
         do {
-            cout << "ID Género: " << temp->IdGeneroMusical << endl;
+            cout << "ID Genero: " << temp->IdGeneroMusical << endl;
             cout << "Nombre: " << temp->nombre << endl;
             cout << "--------------------------" << endl;
             temp = temp->siguienteElemento;
@@ -201,15 +201,15 @@ struct listaGenerosMusicales
     
     void imprimir() {
         if (primerElemento == nullptr) {
-            cout << "No hay géneros musicales registrados.\n";
+            cout << "No hay generos musicales registrados.\n";
             return;
         }
     
         generoMusical* temp = primerElemento;
         do {
-            cout << "ID Género: " << temp->IdGeneroMusical << endl;
+            cout << "ID Genero: " << temp->IdGeneroMusical << endl;
             cout << "Nombre: " << temp->nombre << endl;
-            cout << "Descripción: " << temp->descripcion << endl;
+            cout << "Descripcion: " << temp->descripcion << endl;
             cout << "Cantidad de canciones: " << (temp->lstCanciones ? temp->lstCanciones->cantidadCanciones() : 0) << endl;
             cout << "--------------------------" << endl;
             temp = temp->siguienteElemento;

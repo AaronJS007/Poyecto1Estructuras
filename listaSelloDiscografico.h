@@ -144,7 +144,7 @@ struct listaSelloDiscografico
 
     void selloConMasArtistas(){
         if (primerElemento == nullptr) {
-            cout << "No hay sellos discográficos registrados.\n";
+            cout << "No hay sellos discograficos registrados.\n";
             return;
         }
     
@@ -163,7 +163,7 @@ struct listaSelloDiscografico
         } while (temp != primerElemento);
     
         if (maxArtistas > 0) {
-            cout << "El sello con más artistas es: " << nombre << " (" << maxArtistas << " artistas)\n";
+            cout << "El sello con mas artistas es: " << nombre << " (" << maxArtistas << " artistas)\n";
         } else {
             cout << "No hay artistas registrados en los sellos.\n";
         }
@@ -171,7 +171,7 @@ struct listaSelloDiscografico
 
     bool ExisteElSello(int id){
         if (primerElemento == nullptr) {
-            cout << "No hay sellos discográficos registrados.\n";
+            cout << "No hay sellos discograficos registrados.\n";
             return false;
         }
     
@@ -187,7 +187,7 @@ struct listaSelloDiscografico
     }
     bool AgregarArtistaAlSello(artista* nuevo){
         if (primerElemento == nullptr) {
-            cout << "No hay sellos discográficos registrados.\n";
+            cout << "No hay sellos discograficos registrados.\n";
             return false;
         }
     
@@ -204,7 +204,7 @@ struct listaSelloDiscografico
 
     void imprimirSimple() {
         if (primerElemento == nullptr) {
-            cout << "No hay géneros musicales registrados.\n";
+            cout << "No hay generos musicales registrados.\n";
             return;
         }
     
@@ -219,7 +219,7 @@ struct listaSelloDiscografico
 
     void imprimir() {
         if (primerElemento == nullptr) {
-            cout << "No hay géneros musicales registrados.\n";
+            cout << "No hay generos musicales registrados.\n";
             return;
         }
     
@@ -227,8 +227,8 @@ struct listaSelloDiscografico
         do {
             cout << "ID sello: " << temp->id << endl;
             cout << "Nombre: " << temp->nombre << endl;
-            cout << "pais: " << temp->pais << endl;
-            cout << "año de fundacion: " << temp->annoFundacion << endl;
+            cout << "Pais: " << temp->pais << endl;
+            cout << "Año de fundacion: " << temp->annoFundacion << endl;
             cout << "Cantidad de artistas: " << (temp->lstArtistas ? temp->lstArtistas->cantidad() : 0) << endl;
             temp->lstArtistas->imprimirSimple();
             cout << "--------------------------" << endl;
